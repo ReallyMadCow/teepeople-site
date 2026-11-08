@@ -32,3 +32,7 @@ After GitHub Pages is live:
 - Twitch embeds use the current live hostname automatically.
 - The YouTube page is set up link-first and is ready for a featured video embed later if you choose one.
 - All game server pages avoid exposing private server details by design.
+
+## MrTeemTactics statistical updates
+
+The public discovery file is served at `/mrteemtactics/updates/v1/index.json`. Its initial state is `unpublished`. After an approved distribution rollout, this path can hold a signed release pointer. Private packages, account credentials and signing keys belong outside this Pages repository.
