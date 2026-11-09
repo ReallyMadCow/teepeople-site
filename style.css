@@ -121,7 +121,7 @@ ul { margin: 0; padding-left: 1.2rem; }
   font-weight: 600;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
-.nav-link:hover, .nav-link.active {
+.nav-link:hover, .nav-link:focus-visible, .nav-link.active {
   color: var(--text);
   background: rgba(124, 86, 255, 0.12);
 }
@@ -354,7 +354,7 @@ ul { margin: 0; padding-left: 1.2rem; }
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (max-width: 760px) {
+@media (max-width: 1023px) {
   .nav-toggle { display: inline-flex; }
   .site-nav {
     display: none;
@@ -364,6 +364,9 @@ ul { margin: 0; padding-left: 1.2rem; }
     top: calc(100% + 0.6rem);
     flex-direction: column;
     align-items: stretch;
+    max-height: calc(100vh - 6.5rem);
+    max-height: calc(100dvh - 6.5rem);
+    overflow-y: auto;
     padding: 0.7rem;
     background: rgba(20, 14, 32, 0.97);
     border: 1px solid var(--card-border);
@@ -372,6 +375,8 @@ ul { margin: 0; padding-left: 1.2rem; }
   }
   .site-nav.open { display: flex; }
   .nav-link { width: 100%; }
+}
+@media (max-width: 760px) {
   h1 { font-size: 2.3rem; }
   .feature-banner, .twitch-card-top, .compact-character {
     flex-direction: column;
