@@ -36,3 +36,7 @@ After GitHub Pages is live:
 ## MrTeemTactics statistical updates
 
 The statistical updater reads `/mrteemtactics/updates/v2/index.json` anonymously. It starts as `unpublished`. After rights review and owner approval, this path can hold signed metadata for immutable statistical assets in a dedicated public GitHub Releases repository. The website hosts only the discovery document. The earlier v1 bootstrap remains unpublished. The application installer is distributed separately.
+
+## Windows download
+
+The menu links to [the latest verified Windows installer](https://teepeople.co.uk/mrteemtactics/download/). GitHub Pages renders the download and its JSON endpoint from `_data/mrteemtactics_windows.json`. The Windows release publisher updates this record after downloading and verifying the versioned MSI.

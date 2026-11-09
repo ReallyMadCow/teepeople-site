@@ -1,0 +1,39 @@
+---
+layout: none
+---
+{% assign version = site.data.mrteemtactics_windows.version %}{% capture installer %}https://github.com/ReallyMadCow/teepeople-site/releases/download/mrteemtactics-{{ version }}/MrTeemTactics-{{ version }}-win64.msi{% endcapture %}<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download MrTeemTactics | TeePeople</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <noscript><meta http-equiv="refresh" content="0;url={{ installer }}"></noscript>
+</head>
+<body>
+  <main class="container page-hero">
+    <h1>MrTeemTactics for Windows</h1>
+    <p>If your download doesn’t start, use the link below.</p>
+    <a class="button primary" id="installer" href="{{ installer }}">Download the Windows MSI</a>
+  </main>
+  <script>
+    (async () => {
+      const link = document.getElementById('installer');
+      try {
+        const response = await fetch('./latest.json?t=' + Date.now(), {cache: 'no-store'});
+        if (response.ok) {
+          const {version} = await response.json();
+          if (typeof version === 'string' && /^(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(version)) {
+            link.href = 'https://github.com/ReallyMadCow/teepeople-site/releases/download/' +
+              'mrteemtactics-' + version + '/MrTeemTactics-' + version + '-win64.msi';
+          }
+        }
+      } catch {
+        // The rendered link also works when the release record is temporarily unavailable.
+      }
+      window.location.replace(link.href);
+    })();
+  </script>
+</body>
+</html>
