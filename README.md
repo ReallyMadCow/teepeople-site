@@ -35,4 +35,4 @@ After GitHub Pages is live:
 
 ## MrTeemTactics statistical updates
 
-The public discovery file is served at `/mrteemtactics/updates/v1/index.json`. Its initial state is `unpublished`. After an approved distribution rollout, this path can hold a signed release pointer. Private packages, account credentials and signing keys belong outside this Pages repository.
+The statistical updater reads `/mrteemtactics/updates/v2/index.json` anonymously. It starts as `unpublished`. After rights review and owner approval, this path can hold signed metadata for immutable statistical assets in a dedicated public GitHub Releases repository. The website hosts only the discovery document. The earlier v1 bootstrap remains unpublished. The application installer is distributed separately.
