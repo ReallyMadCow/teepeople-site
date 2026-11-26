@@ -109,6 +109,13 @@ ul { margin: 0; padding-left: 1.2rem; }
   box-shadow: 0 10px 25px rgba(124, 86, 255, 0.25);
 }
 .brand-wordmark { font-size: 1.22rem; }
+.trademark {
+  font-size: 0.65em;
+  line-height: 0;
+  vertical-align: 0.6em;
+  letter-spacing: normal;
+  margin-inline-start: 0.08em;
+}
 .site-nav {
   display: flex;
   align-items: center;
