@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#21172d">
-  {% capture display_title %}{% if page.title %}{{ page.title }} | {% endif %}TeePeople{% endcapture %}
+  {% capture display_title %}{% if page.search_title %}{{ page.search_title }}{% else %}{% if page.title %}{{ page.title }} | {% endif %}TeePeople{% endif %}{% endcapture %}
   <title>{{ display_title | escape }}</title>
   <meta name="description" content="{{ page.description | escape }}">
   {% if page.noindex %}
@@ -23,8 +23,18 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="TeePeople logo and wordmark with the text Independent software publisher and gaming community">
   <meta name="twitter:card" content="summary_large_image">
+  {% if page.section == "home" %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TeePeople",
+      "url": {{ canonical_url | jsonify }}
+    }
+  </script>
   {% endif %}
-  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+  {% endif %}
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/images/branding/favicon-teepeople.png' | relative_url }}">
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
   {% if page.media %}
   <script src="{{ '/script.js' | relative_url }}" defer></script>
