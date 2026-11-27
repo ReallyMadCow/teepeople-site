@@ -129,6 +129,75 @@ p { text-wrap: pretty; }
 .availability-panel p { margin-top: .65rem; }
 .availability-panel .text-link { display: inline-block; margin-top: .75rem; }
 
+/* Contact directory */
+.contact-directory { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .9rem; }
+.contact-card {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr);
+  align-items: start;
+  gap: .95rem;
+  border-top: 2px solid #8066a1;
+  background: #211a2a;
+  padding: clamp(1rem,2vw,1.55rem);
+}
+.contact-card:last-of-type { grid-column: 1 / -1; }
+.contact-icon {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid #5d4776;
+  background: #36254b;
+  color: var(--purple);
+  font: 1.4rem/1 "Segoe UI Symbol", "Apple Symbols", sans-serif;
+}
+.contact-icon > span { position: relative; display: grid; place-items: center; width: 1.25rem; height: 1.25rem; }
+.contact-icon--mail > span::before,
+.contact-icon--privacy > span::before,
+.contact-icon--security > span::before {
+  content: "";
+  position: absolute;
+  border: 1.5px solid currentColor;
+}
+.contact-icon--mail > span::before { inset: .21rem 0; border-radius: .12rem; }
+.contact-icon--mail > span::after {
+  content: "";
+  position: absolute;
+  top: .14rem;
+  width: .64rem;
+  height: .64rem;
+  border-right: 1.5px solid;
+  border-bottom: 1.5px solid;
+  transform: rotate(45deg);
+}
+.contact-icon--privacy > span::before { inset: .55rem .12rem .04rem; border-radius: .1rem; }
+.contact-icon--privacy > span::after {
+  content: "";
+  position: absolute;
+  inset: .07rem .35rem .68rem;
+  border: 1.5px solid;
+  border-bottom: 0;
+  border-radius: .4rem .4rem 0 0;
+}
+.contact-icon--security > span::before { inset: .03rem .1rem; border-radius: .12rem .12rem .6rem .6rem; }
+.contact-icon--security > span::after {
+  content: "";
+  position: absolute;
+  top: .42rem;
+  width: .46rem;
+  height: .28rem;
+  border-left: 1.5px solid;
+  border-bottom: 1.5px solid;
+  transform: translateY(-.05rem) rotate(-45deg);
+}
+.contact-card h2 { font-size: clamp(1.24rem,2.3vw,1.62rem); letter-spacing: -.036em; }
+.contact-card p { max-width: 40rem; margin: .45rem 0 .8rem; color: var(--muted); }
+.contact-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .55rem .95rem; }
+.contact-actions a { color: var(--purple); overflow-wrap: anywhere; }
+.contact-actions button { min-width: 7.6rem; }
+.contact-note { margin-top: 1.35rem; padding: .95rem 0 clamp(2.6rem,5vw,4rem); border-top: 1px solid var(--line); color: var(--muted); font-size: .94rem; }
+.contact-note p { max-width: 62ch; }
+
 /* Community pages */
 .signal-community { padding-bottom: clamp(2.8rem,5.2vw,5rem); }
 .community-intro { max-width: 47rem; color: var(--muted); margin-bottom: 1.35rem; }
@@ -231,6 +300,7 @@ p { text-wrap: pretty; }
   .app-banner h1 { font-size: clamp(2.15rem,9.4vw,3.8rem); }
   .page-hero h1 { font-size: clamp(2.35rem,9.3vw,4rem); }
   .signal-release, .signal-detail, .community-ledger, .split-hero, .two-up { grid-template-columns: minmax(0,1fr); }
+  .contact-directory { grid-template-columns: minmax(0,1fr); }
   .signal-detail > :first-child, .signal-detail > :last-child { grid-column: auto; grid-row: auto; }
   .signal-spotlight { gap: 1.45rem; }
   .signal-spec { border-top: 1px solid #59466d; }

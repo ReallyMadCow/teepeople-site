@@ -1,0 +1,37 @@
+[
+  {
+    "id": "general-enquiries",
+    "icon": "mail",
+    "title": "General enquiries",
+    "email": "contact@teepeople.co.uk",
+    "description": "General questions, feedback, suggestions, collaborations and enquiries about TeePeople."
+  },
+  {
+    "id": "software-support",
+    "icon": "support",
+    "title": "Software support",
+    "email": "support@teepeople.co.uk",
+    "description": "Application issues, installation problems, bug reports and technical assistance."
+  },
+  {
+    "id": "legal-enquiries",
+    "icon": "legal",
+    "title": "Legal enquiries",
+    "email": "legal@teepeople.co.uk",
+    "description": "Intellectual property, copyright, trademarks, licensing and other legal matters."
+  },
+  {
+    "id": "privacy-and-data-protection",
+    "icon": "privacy",
+    "title": "Privacy and data protection",
+    "email": "privacy@teepeople.co.uk",
+    "description": "Personal data enquiries, privacy concerns and data protection requests."
+  },
+  {
+    "id": "security",
+    "icon": "security",
+    "title": "Security",
+    "email": "security@teepeople.co.uk",
+    "description": "Responsible disclosure of security vulnerabilities and potential security incidents."
+  }
+]

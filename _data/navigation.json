@@ -2,7 +2,8 @@
   "primary": [
     { "label": "Home", "path": "/", "section": "home" },
     { "label": "Software", "path": "/software/", "section": "software" },
-    { "label": "Members", "path": "/members.html", "section": "members" }
+    { "label": "Members", "path": "/members.html", "section": "members" },
+    { "label": "Contact", "path": "/contact/", "section": "contact" }
   ],
   "community": [
     { "label": "D&D archive", "path": "/dnd/" },

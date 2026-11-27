@@ -1,0 +1,31 @@
+---
+layout: signal
+title: Contact
+description: Find the right TeePeople email address for general enquiries, software support, legal, privacy or security.
+section: contact
+---
+<section class="wrap signal-banner">
+  <h1>Contact TeePeople<sup class="trademark">&trade;</sup></h1>
+  <p class="lede">TeePeople is an independent software publisher and gaming community. Choose the email address that best fits your enquiry.</p>
+</section>
+<section class="wrap contact-directory" aria-label="Contact addresses">
+  {% for contact in site.data.contact %}
+  <article class="contact-card" id="{{ contact.id }}">
+    <span class="contact-icon contact-icon--{{ contact.icon }}" aria-hidden="true">
+      <span>{% case contact.icon %}{% when "support" %}&#x2699;&#xFE0E;{% when "legal" %}&#x2696;&#xFE0E;{% endcase %}</span>
+    </span>
+    <div class="contact-card-content">
+      <h2>{{ contact.title | escape }}</h2>
+      <p>{{ contact.description | escape }}</p>
+      <div class="contact-actions">
+        <a class="text-link" href="mailto:{{ contact.email | escape }}">{{ contact.email | escape }}</a>
+        <button class="button secondary" type="button" data-copy-address hidden aria-label="Copy address for {{ contact.title | escape }}">Copy address</button>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+  <p class="visually-hidden" id="copy-address-status" role="status"></p>
+</section>
+<aside class="wrap contact-note">
+  <p>TeePeople is independently operated, and response times may vary. Please send your enquiry to one address only to avoid duplicates.</p>
+</aside>

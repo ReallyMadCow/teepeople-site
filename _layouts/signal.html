@@ -24,6 +24,9 @@
   {% if page.media %}
   <script src="{{ '/script.js' | relative_url }}" defer></script>
   {% endif %}
+  {% if page.section == "contact" %}
+  <script src="{{ '/assets/js/copy-address.js' | relative_url }}" defer></script>
+  {% endif %}
 </head>
 <body class="signal">
   <a class="skip" href="#main">Skip to content</a>
