@@ -267,6 +267,7 @@ p { text-wrap: pretty; }
 .embed-shell { margin-top: 1rem; }
 .embed-shell iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: #100d16; }
 [data-player="twitch"] iframe { min-height: 300px; }
+[data-player="youtube"] iframe { min-height: 200px; }
 
 @media (min-width: 47.01rem) and (max-width: 61rem) {
   :root { --rail-width: 11.7rem; --gutter: 1.45rem; }

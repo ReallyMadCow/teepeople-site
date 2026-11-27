@@ -46,7 +46,7 @@ The statistical updater reads `/mrteemtactics/updates/v2/index.json` anonymously
 The [MrTeemTactics product page](https://teepeople.co.uk/software/mrteemtactics/)
 shows the version, platform, package size and SHA-256 before visitors choose
 to download. The legacy [download URL](https://teepeople.co.uk/mrteemtactics/download/)
-still starts the installer download automatically. GitHub Pages renders both
+also requires an explicit click to start the download. GitHub Pages renders both
 pages and the legacy download JSON endpoint from
 `_data/mrteemtactics_windows.json`. The Windows release publisher updates
 that record after downloading and verifying the versioned MSI.
