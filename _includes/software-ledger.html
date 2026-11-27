@@ -9,12 +9,12 @@
     {% endif %}
     <article class="ledger-row">
       <div>
-        <p class="eyebrow">{{ app.category | escape }}{% if app_release.version %} · v{{ app_release.version | escape }}{% endif %}</p>
+        <p class="eyebrow">{{ app.category | escape }}{% if app.platforms.size > 0 %} · {{ app.platforms | join: ', ' | escape }}{% endif %}{% if app_release.version %} · v{{ app_release.version | escape }}{% endif %}</p>
         <h3><a class="title-link" href="{{ app.path | relative_url }}">{{ app.name | escape }}</a></h3>
         <p>{{ app.summary | escape }}</p>
       </div>
-      <p class="status{% unless app_release.version %} developmental{% endunless %}">{{ app.status | escape }}</p>
-      {% if app_release.version %}
+      <p class="status{% unless app.status == 'released' %} developmental{% endunless %}">{{ app.status | replace: '_', ' ' | capitalize | escape }}</p>
+      {% if app.status == 'released' %}
       <a class="text-link" href="{{ app.path | relative_url }}" aria-label="{{ app.name | escape }} release details">Release details</a>
       {% else %}
       <a class="text-link" href="{{ app.path | relative_url }}" aria-label="{{ app.name | escape }} project overview">Project overview</a>

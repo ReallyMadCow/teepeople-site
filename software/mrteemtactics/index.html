@@ -4,14 +4,14 @@ title: MrTeemTactics
 description: Compare Dota 2 draft recommendations across five positions. Get the latest Windows release from TeePeople.
 section: software
 ---
-{% assign tactics = site.data.software.apps | where: 'release', 'mrteemtactics_windows' | first %}
-{% assign release = site.data.mrteemtactics_windows %}
+{% assign tactics = site.data.software.apps | where: 'id', 'mrteemtactics' | first %}
+{% assign release = site.data[tactics.release] %}
 {% assign notes = site.data.software.tactics_notes[release.version] %}
 {% capture release_url %}https://github.com/ReallyMadCow/teepeople-site/releases/tag/mrteemtactics-{{ release.version }}{% endcapture %}
 {% capture installer_url %}https://github.com/ReallyMadCow/teepeople-site/releases/download/mrteemtactics-{{ release.version }}/MrTeemTactics-{{ release.version }}-win64.msi{% endcapture %}
 <section class="wrap signal-banner app-banner">
   <a class="crumb" href="{{ '/software/' | relative_url }}">Software catalogue</a>
-  <p class="status">Released · Windows 11</p>
+  <p class="status">{{ tactics.status | capitalize | escape }} · {{ tactics.platforms | join: ', ' | escape }}</p>
   <h1>MrTeemTactics</h1>
   <p class="lede">{{ tactics.description | escape }}</p>
 </section>
@@ -20,7 +20,7 @@ section: software
     <p class="eyebrow">Current Windows release</p>
     <h2 id="download-title">MrTeemTactics {{ release.version | escape }}</h2>
     <dl class="release-spec">
-      <div><dt>Platform</dt><dd>Windows 11</dd></div>
+      <div><dt>Platform</dt><dd>{{ tactics.platforms | join: ', ' | escape }}</dd></div>
       <div><dt>Installer</dt><dd>x64 MSI</dd></div>
       <div><dt>Size</dt><dd>{{ release.bytes | times: 1.0 | divided_by: 1048576 | round: 1 }} MiB</dd></div>
     </dl>
@@ -50,6 +50,7 @@ section: software
       <p><a class="text-link" href="{{ release_url }}">Read the release notes on GitHub</a></p>
       {% endif %}
       <p>If you already have version 0.321 or later, the advisor can offer the update in the app. Close Dota before updating.</p>
+      <p><a class="text-link" href="{{ tactics.support | relative_url }}">Get software support</a></p>
     </section>
   </div>
 </div>

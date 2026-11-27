@@ -4,10 +4,10 @@ title: MrTeeTales
 description: A D&D session recorder and campaign notebook in development by TeePeople.
 section: software
 ---
-{% assign tales = site.data.software.apps | where: 'name', 'MrTeeTales' | first %}
+{% assign tales = site.data.software.apps | where: 'id', 'mrteetales' | first %}
 <section class="wrap signal-banner app-banner">
   <a class="crumb" href="{{ '/software/' | relative_url }}">Software catalogue</a>
-  <p class="status developmental">In development</p>
+  <p class="status developmental">{{ tales.status | replace: '_', ' ' | capitalize | escape }}</p>
   <h1>MrTeeTales</h1>
   <p class="lede">{{ tales.description | escape }}</p>
 </section>
@@ -15,6 +15,7 @@ section: software
   <aside class="signal-spec availability-panel">
     <h2>Availability</h2>
     <p>A public release is not available.</p>
+    <p><a class="text-link" href="{{ tales.support | relative_url }}">Contact TeePeople about MrTeeTales</a></p>
     <a class="text-link" href="{{ '/dnd/evidence-of-absence.html' | relative_url }}">Read Evidence of Absence</a>
   </aside>
   <section class="signal-workflow">

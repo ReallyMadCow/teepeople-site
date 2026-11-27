@@ -33,9 +33,30 @@ After GitHub Pages is live:
   work without JavaScript. Twitch’s player is offered only where its 400 × 300
   minimum size fits.
 - All game server pages avoid exposing private server details by design.
-- Update the catalogue in `_data/software.json`. Its released entries read
-  their version from the associated release data file. Add version-specific
-  release notes under `tactics_notes` when they are available.
+
+## Catalogue and release checks
+
+Each `_data/software.json` entry has a stable `id`, product `path`, category,
+summary, description, status, supported platforms, and a `support` link to
+a Contact page section. Use `released` or `in_development` for status. A
+released entry names its `release` data file and lists at least one platform.
+An in-development entry may leave `platforms` empty. Add MrTeemTactics
+release notes under `tactics_notes` when they are available.
+
+From the repository root, run the following before publishing:
+
+```text
+python _scripts/check_release.py
+jekyll build --safe
+python _scripts/check_release.py --site _site
+```
+
+The Python check uses the standard library. It validates catalogue fields,
+product routes and support links, and compares the MrTeemTactics website
+release record with the application feed. With `--site`, it also checks the
+generated product and download links, the four JSON feeds, and that the
+checker stays out of the generated site. Verify the uploaded installer and
+its signature separately.
 
 ## MrTeemTactics statistical updates
 

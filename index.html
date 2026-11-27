@@ -3,8 +3,8 @@ layout: signal
 section: home
 description: TeePeople is an independent software publisher and gaming community. Discover our apps, game servers, streams and tabletop campaigns.
 ---
-{% assign tactics = site.data.software.apps | where: 'release', 'mrteemtactics_windows' | first %}
-{% assign release = site.data.mrteemtactics_windows %}
+{% assign tactics = site.data.software.apps | where: 'id', 'mrteemtactics' | first %}
+{% assign release = site.data[tactics.release] %}
 {% assign notes = site.data.software.tactics_notes[release.version] %}
 <section class="wrap signal-banner">
   <p class="eyebrow">Independent software publisher &amp; gaming community</p>
