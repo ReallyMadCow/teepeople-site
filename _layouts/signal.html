@@ -4,19 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#21172d">
-  <title>{% if page.title %}{{ page.title | escape }} | {% endif %}TeePeople</title>
+  {% capture display_title %}{% if page.title %}{{ page.title }} | {% endif %}TeePeople{% endcapture %}
+  <title>{{ display_title | escape }}</title>
   <meta name="description" content="{{ page.description | escape }}">
-  {% if page.section == "home" %}
-  <meta property="og:title" content="TeePeople">
+  {% if page.noindex %}
+  <meta name="robots" content="noindex">
+  {% else %}
+  {% assign canonical_url = page.url | strip_index | absolute_url %}
+  <link rel="canonical" href="{{ canonical_url | escape }}">
+  <meta property="og:title" content="{{ display_title | escape }}">
   <meta property="og:description" content="{{ page.description | escape }}">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://teepeople.co.uk/">
+  <meta property="og:url" content="{{ canonical_url | escape }}">
   <meta property="og:site_name" content="TeePeople">
-  <meta property="og:image" content="https://teepeople.co.uk/assets/images/social/teepeople-preview.png">
+  <meta property="og:image" content="{{ '/assets/images/social/teepeople-preview.png' | absolute_url | escape }}">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="TeePeople logo on a dark purple background">
+  <meta property="og:image:alt" content="TeePeople logo and wordmark with the text Independent software publisher and gaming community">
   <meta name="twitter:card" content="summary_large_image">
   {% endif %}
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">

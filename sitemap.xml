@@ -1,0 +1,12 @@
+---
+layout: none
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% assign pages_by_url = site.html_pages | sort: "url" -%}
+  {% for entry in pages_by_url -%}
+  {% unless entry.noindex -%}
+  <url><loc>{{ entry.url | strip_index | absolute_url | xml_escape }}</loc></url>
+  {% endunless -%}
+  {% endfor -%}
+</urlset>

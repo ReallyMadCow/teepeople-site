@@ -1,5 +1,6 @@
 ---
 layout: none
+noindex: true
 ---
 {% assign version = site.data.mrteemtactics_windows.version %}{% capture installer %}https://github.com/ReallyMadCow/teepeople-site/releases/download/mrteemtactics-{{ version }}/MrTeemTactics-{{ version }}-win64.msi{% endcapture %}<!doctype html>
 <html lang="en-GB">
@@ -7,6 +8,7 @@ layout: none
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Download MrTeemTactics | TeePeople</title>
+  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#21172d">
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
