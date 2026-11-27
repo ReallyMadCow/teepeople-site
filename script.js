@@ -1,24 +1,57 @@
+for (const region of document.querySelectorAll("[data-player]")) {
+  const trigger = region.querySelector("[data-load-player]");
+  const slot = region.querySelector("[data-player-slot]");
+  const externalLink = region.querySelector("a");
+  const twitch = region.dataset.player === "twitch";
+  const id = region.dataset.playerId;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.querySelector(".nav-toggle");
-  const nav = document.querySelector(".site-nav");
-  if (toggle && nav) {
-    toggle.addEventListener("click", () => {
-      const open = nav.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(open));
-    });
+  function playerFits() {
+    return !twitch || (window.location.hostname && region.clientWidth >= 400);
   }
 
-  document.querySelectorAll(".twitch-embed").forEach((shell) => {
-    const channel = shell.dataset.channel;
-    if (!channel) return;
-    const host = window.location.hostname || "localhost";
-    if (host === "") return;
-    const iframe = document.createElement("iframe");
-    iframe.allowFullscreen = true;
-    iframe.src = `https://player.twitch.tv/?channel=${encodeURIComponent(channel)}&parent=${encodeURIComponent(host)}`;
-    iframe.title = `${channel} Twitch stream`;
-    shell.innerHTML = "";
-    shell.appendChild(iframe);
+  function updateAvailability() {
+    const fits = playerFits();
+    const player = slot.querySelector("iframe");
+    if (!fits && player) {
+      const playerHadFocus = document.activeElement === player;
+      player.remove();
+      slot.hidden = true;
+      if (playerHadFocus) externalLink.focus();
+    }
+    trigger.hidden = !fits || !slot.hidden;
+  }
+
+  trigger.addEventListener("click", () => {
+    if (!playerFits() || !slot.hidden) return;
+
+    const url = twitch
+      ? new URL("https://player.twitch.tv/")
+      : new URL(`https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}`);
+
+    if (twitch) {
+      url.searchParams.set("channel", id);
+      url.searchParams.set("parent", window.location.hostname);
+      url.searchParams.set("autoplay", "false");
+    }
+
+    const player = document.createElement("iframe");
+    player.title = region.dataset.playerTitle;
+    player.allowFullscreen = true;
+    if (!twitch) player.allow = "encrypted-media; picture-in-picture";
+    player.src = url.href;
+    slot.appendChild(player);
+    slot.hidden = false;
+    trigger.hidden = true;
+    player.focus();
   });
-});
+
+  updateAvailability();
+  if (twitch) {
+    if ("ResizeObserver" in window) {
+      const observer = new ResizeObserver(updateAvailability);
+      observer.observe(region);
+    } else {
+      window.addEventListener("resize", updateAvailability);
+    }
+  }
+}

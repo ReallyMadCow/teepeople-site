@@ -1,9 +1,11 @@
 # TeePeople website
 
-Static multi-page site built for GitHub Pages and easy future self-hosting.
+Static Jekyll site for GitHub Pages. The Signal layout and shared navigation
+live in `_layouts` and `_includes`.
 
 ## Included pages
 - Home
+- Software catalogue, MrTeemTactics release page and MrTeeTales development page
 - Members
 - Game Servers
 - YouTube
@@ -12,13 +14,11 @@ Static multi-page site built for GitHub Pages and easy future self-hosting.
 - Evidence of Absence campaign page
 - Character pages for Azarth, Zenko Shadowleaf, Daenalieth Althaea, and Kael Thorne
 
-## Deploying to GitHub Pages
-1. Create a new GitHub repository.
-2. Upload all files from this folder to the repository root.
-3. In GitHub, open **Settings > Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Select the main branch and the root folder.
-6. Save.
+## Local preview
+
+With Jekyll 3.10.0 available, run `jekyll serve --safe` from the repository
+root and open the local address it prints. The build renders the site layout
+and release metadata. Opening the source HTML directly skips that step.
 
 ## Custom domain
 A `CNAME` file is already included for `teepeople.co.uk`.
@@ -29,9 +29,13 @@ After GitHub Pages is live:
 3. Enable HTTPS once it becomes available.
 
 ## Notes
-- Twitch embeds use the current live hostname automatically.
-- The YouTube page is set up link-first and is ready for a featured video embed later if you choose one.
+- Stream and video embeds load on request. Direct Twitch and YouTube links
+  work without JavaScript. Twitch’s player is offered only where its 400 × 300
+  minimum size fits.
 - All game server pages avoid exposing private server details by design.
+- Update the catalogue in `_data/software.json`. Its released entries read
+  their version from the associated release data file. Add version-specific
+  release notes under `tactics_notes` when they are available.
 
 ## MrTeemTactics statistical updates
 
@@ -39,4 +43,10 @@ The statistical updater reads `/mrteemtactics/updates/v2/index.json` anonymously
 
 ## Windows download
 
-The menu links to [the latest verified Windows installer](https://teepeople.co.uk/mrteemtactics/download/). GitHub Pages renders the download and its JSON endpoint from `_data/mrteemtactics_windows.json`. The Windows release publisher updates this record after downloading and verifying the versioned MSI.
+The [MrTeemTactics product page](https://teepeople.co.uk/software/mrteemtactics/)
+shows the version, platform, package size and SHA-256 before visitors choose
+to download. The legacy [download URL](https://teepeople.co.uk/mrteemtactics/download/)
+still starts the installer download automatically. GitHub Pages renders both
+pages and the legacy download JSON endpoint from
+`_data/mrteemtactics_windows.json`. The Windows release publisher updates
+that record after downloading and verifying the versioned MSI.

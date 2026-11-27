@@ -1,0 +1,24 @@
+<header class="masthead">
+  <div class="header-inner">
+    {% include brand.html %}
+    <nav class="main-nav" aria-label="Main navigation">
+      {% include nav-links.html items=site.data.navigation.primary %}
+    </nav>
+    <nav class="rail-community" aria-label="Community pages">
+      <p class="eyebrow">From the community</p>
+      {% include nav-links.html items=site.data.navigation.community %}
+    </nav>
+    <details class="mobile-menu">
+      <summary>Menu</summary>
+      <div class="mobile-links">
+        <nav aria-label="Main navigation">
+          {% include nav-links.html items=site.data.navigation.primary %}
+        </nav>
+        <nav aria-label="Community pages">
+          <p class="eyebrow">From the community</p>
+          {% include nav-links.html items=site.data.navigation.community %}
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>

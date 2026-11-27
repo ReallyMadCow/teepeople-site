@@ -1,0 +1,27 @@
+{
+  "apps": [
+    {
+      "name": "MrTeemTactics",
+      "path": "/software/mrteemtactics/",
+      "category": "Windows",
+      "summary": "Draft advice for Dota 2.",
+      "description": "A Windows companion for Dota 2 drafts. Compare recommendations across five positions and see the evidence behind each pick.",
+      "status": "Released",
+      "release": "mrteemtactics_windows"
+    },
+    {
+      "name": "MrTeeTales",
+      "path": "/software/mrteetales/",
+      "category": "Tabletop tools",
+      "summary": "Record, review, and search D&D sessions.",
+      "description": "A D&D session recorder and campaign notebook in development. Revisit what was said, find recurring names, and build session notes from reviewed transcripts.",
+      "status": "In development"
+    }
+  ],
+  "tactics_notes": {
+    "0.334": {
+      "date": "2026-11-25",
+      "summary": "The dashboard shows when the statistics it is using were published, in UTC."
+    }
+  }
+}

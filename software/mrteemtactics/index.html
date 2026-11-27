@@ -1,0 +1,55 @@
+---
+layout: signal
+title: MrTeemTactics
+description: Compare Dota 2 draft recommendations across five positions. Get the latest Windows release from TeePeople.
+section: software
+---
+{% assign tactics = site.data.software.apps | where: 'release', 'mrteemtactics_windows' | first %}
+{% assign release = site.data.mrteemtactics_windows %}
+{% assign notes = site.data.software.tactics_notes[release.version] %}
+{% capture release_url %}https://github.com/ReallyMadCow/teepeople-site/releases/tag/mrteemtactics-{{ release.version }}{% endcapture %}
+{% capture installer_url %}https://github.com/ReallyMadCow/teepeople-site/releases/download/mrteemtactics-{{ release.version }}/MrTeemTactics-{{ release.version }}-win64.msi{% endcapture %}
+<section class="wrap signal-banner app-banner">
+  <a class="crumb" href="{{ '/software/' | relative_url }}">Software catalogue</a>
+  <p class="status">Released · Windows 11</p>
+  <h1>MrTeemTactics</h1>
+  <p class="lede">{{ tactics.description | escape }}</p>
+</section>
+<div class="wrap signal-detail">
+  <section class="download-box" id="download" aria-labelledby="download-title">
+    <p class="eyebrow">Current Windows release</p>
+    <h2 id="download-title">MrTeemTactics {{ release.version | escape }}</h2>
+    <dl class="release-spec">
+      <div><dt>Platform</dt><dd>Windows 11</dd></div>
+      <div><dt>Installer</dt><dd>x64 MSI</dd></div>
+      <div><dt>Size</dt><dd>{{ release.bytes | times: 1.0 | divided_by: 1048576 | round: 1 }} MiB</dd></div>
+    </dl>
+    <a class="button primary" href="{{ installer_url }}">Download Windows MSI</a>
+    <details class="checksum">
+      <summary>Verify the installer</summary>
+      <p>Compare your installer’s SHA-256 checksum with the published value.</p>
+      <code>{{ release.sha256 | escape }}</code>
+    </details>
+    <a class="text-link" href="{{ release_url }}">GitHub release</a>
+  </section>
+  <div class="signal-flow">
+    <section class="signal-workflow">
+      <h2>From draft to decision</h2>
+      <ul class="feature-list">
+        <li><strong>Position-by-position advice</strong><span>Review suggestions for carry, mid, offlane and both support roles.</span></li>
+        <li><strong>Explainable recommendations</strong><span>See how matchups, lanes, synergies and team composition affect a pick.</span></li>
+        <li><strong>Evidence freshness</strong><span>See which patch the evidence covers and when the active statistics were published.</span></li>
+      </ul>
+    </section>
+    <section class="release-notes">
+      {% if notes.date %}<p class="eyebrow"><time datetime="{{ notes.date }}">{{ notes.date | date: '%-d %B %Y' }}</time></p>{% endif %}
+      <h2>What changed in {{ release.version | escape }}</h2>
+      {% if notes.summary %}
+      <p>{{ notes.summary | escape }}</p>
+      {% else %}
+      <p><a class="text-link" href="{{ release_url }}">Read the release notes on GitHub</a></p>
+      {% endif %}
+      <p>If you already have version 0.321 or later, the advisor can offer the update in the app. Close Dota before updating.</p>
+    </section>
+  </div>
+</div>

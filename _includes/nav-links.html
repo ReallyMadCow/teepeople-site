@@ -1,0 +1,4 @@
+{% assign current_path = page.url | replace: '/index.html', '/' %}
+{% for item in include.items %}
+  <a href="{{ item.path | relative_url }}{% if item.anchor %}#{{ item.anchor }}{% endif %}"{% if current_path == item.path and item.anchor == nil %} aria-current="page"{% elsif page.section == item.section %} class="current-section"{% endif %}>{{ item.label | escape }}</a>
+{% endfor %}
