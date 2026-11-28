@@ -30,6 +30,10 @@
     "0.334": {
       "date": "2026-11-25",
       "summary": "The dashboard shows when the statistics it is using were published, in UTC."
+    },
+    "0.341": {
+      "date": "2026-11-28",
+      "summary": "Rank preferences can shape hero recommendations in all five positions when a qualified statistical update supports them. Unsupported selections keep the established recommendations."
     }
   }
 }
